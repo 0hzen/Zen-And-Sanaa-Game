@@ -20,10 +20,13 @@ let dialogue = [
 
 let dialogueIndex = 0;
 
-// Function to move Zen and Sanaa with the joystick
+// Joystick movement parameters
 let joystickOffsetX = 0;
 let joystickOffsetY = 0;
+let joystickRadius = 50;
+let joystickCenter = { x: 50, y: 50 };
 
+// Function to move Zen and Sanaa with the joystick
 joystickKnob.addEventListener('touchstart', (e) => {
     let touch = e.touches[0];
     joystickOffsetX = touch.clientX - joystickKnob.offsetLeft;
@@ -37,20 +40,20 @@ joystickKnob.addEventListener('touchmove', (e) => {
     let newY = touch.clientY - joystickOffsetY;
 
     // Limit the knob movement within the base circle
-    let dist = Math.sqrt(Math.pow(newX - 50, 2) + Math.pow(newY - 50, 2));
-    if (dist > 50) {
-        let angle = Math.atan2(newY - 50, newX - 50);
-        newX = 50 + 50 * Math.cos(angle);
-        newY = 50 + 50 * Math.sin(angle);
+    let dist = Math.sqrt(Math.pow(newX - joystickCenter.x, 2) + Math.pow(newY - joystickCenter.y, 2));
+    if (dist > joystickRadius) {
+        let angle = Math.atan2(newY - joystickCenter.y, newX - joystickCenter.x);
+        newX = joystickCenter.x + joystickRadius * Math.cos(angle);
+        newY = joystickCenter.y + joystickRadius * Math.sin(angle);
     }
 
     joystickKnob.style.left = newX + 'px';
     joystickKnob.style.top = newY + 'px';
 
     // Update Zen and Sanaa position
-    zenPositionX = (newX / 100) * 100; // Move Zen according to the joystick's X-axis
-    sanaaPositionX = (newX / 100) * 100; // Move Sanaa in sync
-    verticalPosition = (newY / 100) * 100; // Move both characters vertically
+    zenPositionX = (newX / joystickBase.offsetWidth) * 100; // Adjust Zen's horizontal position
+    sanaaPositionX = zenPositionX + 10; // Keep Sanaa slightly ahead of Zen
+    verticalPosition = (newY / joystickBase.offsetHeight) * 100; // Adjust vertical movement
 
     // Update character positions
     zen.style.left = zenPositionX + '%';
@@ -58,7 +61,7 @@ joystickKnob.addEventListener('touchmove', (e) => {
     zen.style.top = verticalPosition + '%';
     sanaa.style.top = verticalPosition + '%';
 
-    // Change dialogue as they move
+    // Update dialogue when Zen reaches certain positions
     if (zenPositionX > 50 && dialogueIndex < dialogue.length) {
         alert(dialogue[dialogueIndex]);
         dialogueIndex++;
@@ -68,8 +71,8 @@ joystickKnob.addEventListener('touchmove', (e) => {
 });
 
 joystickKnob.addEventListener('touchend', () => {
-    joystickKnob.style.left = '25px';
-    joystickKnob.style.top = '25px'; // Reset the knob position to center when released
+    joystickKnob.style.left = '50px';
+    joystickKnob.style.top = '50px'; // Reset the knob position to center when released
 });
 
 // Function for the jump button
