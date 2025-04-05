@@ -1,0 +1,140 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e6f7ff;
+    flex-direction: column;
+}
+
+#game-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-color: #87CEEB; /* Sky */
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+#sky {
+    background-color: #87CEEB;
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    top: 0;
+}
+
+#clouds {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 20%;
+}
+
+#grass-path {
+    background-color: #2c3e50;
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+}
+
+.character {
+    position: absolute;
+    width: 30px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.character .name {
+    position: absolute;
+    top: -20px;
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+
+#zen {
+    background-color: #2c3e50;
+    left: 10%;
+    top: 50%;
+}
+
+#sanaa {
+    background-color: #95a5a6;
+    left: 25%;
+    top: 50%;
+}
+
+#zen .head, #sanaa .head {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#zen .hair, #sanaa .hair {
+    width: 30px;
+    height: 10px;
+    background-color: #2c1f16;
+    border-radius: 5px;
+}
+
+#sanaa .hair {
+    background-color: #4e2a1a;
+}
+
+#joystick {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+#joystick-base {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    border-radius: 50%;
+    position: relative;
+}
+
+#joystick-knob {
+    width: 50px;
+    height: 50px;
+    background-color: #2980b9;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+}
+
+#jump-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#jump-btn:active {
+    background-color: #c0392b;
+}
