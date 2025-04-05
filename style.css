@@ -13,14 +13,14 @@ body {
     height: 100vh;
     background-color: #e6f7ff;
     flex-direction: column;
+    overflow: hidden;
 }
 
 #game-container {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     background-color: #87CEEB; /* Sky */
-    border: 2px solid black;
     overflow: hidden;
 }
 
@@ -135,6 +135,3 @@ body {
     cursor: pointer;
 }
 
-#jump-btn:active {
-    background-color: #c0392b;
-}
